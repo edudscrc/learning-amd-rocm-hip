@@ -7,7 +7,7 @@ constexpr size_t N { 1000000 };
 constexpr size_t vectorSizeBytes = N * sizeof(double_t);
 
 __global__ void vectorAdd(double_t* A, double_t* B, double_t* C, size_t vectorSize) {
-    int globalThreadIdx = blockIdx.x * blockDim.x + threadIdx.x;
+    size_t globalThreadIdx = blockIdx.x * blockDim.x + threadIdx.x;
     if (globalThreadIdx < vectorSize) {
         C[globalThreadIdx] = A[globalThreadIdx] + B[globalThreadIdx];
     }
